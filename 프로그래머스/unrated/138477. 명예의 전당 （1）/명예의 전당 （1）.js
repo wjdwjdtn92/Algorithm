@@ -1,17 +1,18 @@
-
 function solution(k, score) {
-    const stack = []
-    return score.reduce((a,c) => {
-        if(stack.length < k) {
-            stack.push(c)
-            stack.sort((a,b) => a - b)
+    const answer = [];
+    const memo = [];
+
+    for (let i = 0; i < score.length; i++) {
+        memo.push(score[i])
+        memo.sort((a, b) => b - a);
+
+        if (i < k) {
+            answer.push(memo[memo.length - 1]);            
+        } else {
+            answer.push(memo[k - 1]);
+            memo.splice(-1);
         }
-        else {
-            stack.push(c)
-            stack.sort((a,b) => a - b)
-            stack.shift()
-        }
-        a.push(stack[0])
-        return a
-    },[])
+    }
+
+    return answer;
 }
