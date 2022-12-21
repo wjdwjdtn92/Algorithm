@@ -36,12 +36,13 @@ function solution(N, stages) {
         delete memo[N + 1];
     }
 
-    const arrFilter = arr.map((value, i) => {
-        if (value) {
-            return i;
+    const arrFilter = arr.reduce((acc, cur, i) => {
+        if (cur) {
+            acc.push(i);
         }
-        return undefined
-    }).filter(Boolean);
+        
+        return acc;
+    }, []);
     
     const sortedfailRateList = Object.keys(memo).map(Number).sort((a, b) => memo[b] - memo[a] || a - b); 
     
