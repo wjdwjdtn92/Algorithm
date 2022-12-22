@@ -2,37 +2,27 @@
 // 배수에 개수 더하기 누적 or 그냥 각자 구해보기
 
 function getDivisorCount(num) {
-    if (num === 1) {
-        return num;
-    }
+    const memo = [0, ...Array(num).fill(1)];
     
-    let count = 2;
-    
-    for (let i = 2; i * i < num; i++) {
-        if (num % i === 0) {
-            count += 2;
+    for (let i = 2; i <= num; i++) {
+        for (let j = i; j <= num; j += i) {
+            memo[j] += 1;
         }
     }
     
-    if (Number.isInteger(Math.sqrt(num))) {
-        count += 1;
-    }
-    
-    return count;
+    return memo.slice(1);
 }
 
 function solution(number, limit, power) {
     let answer = 0;
     
-    for (let i = 1; i <= number; i++) {
-        const divisorCount = getDivisorCount(i);
-        
+    getDivisorCount(number).forEach((divisorCount) => {
         if (divisorCount > limit) {
             answer += power;
         } else {
             answer += divisorCount;
         }
-    }
+    })
    
     
     return answer;
