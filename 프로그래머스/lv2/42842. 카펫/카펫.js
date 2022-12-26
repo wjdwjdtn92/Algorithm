@@ -9,11 +9,14 @@ function solution(brown, yellow) {
     while (col <= total) {
         row = total / col;
         
-        if (Number.isInteger(row)) {
-            if ((col * 2) + ((row - 2) * 2) === brown) {
-                break;
-            }
-        };
+        if (!Number.isInteger(row)) {
+            col += 1;
+            continue;
+        }; 
+        
+        if ((col * 2) + ((row - 2) * 2) === brown) {
+            break;
+        }
         col += 1;
     }
     
