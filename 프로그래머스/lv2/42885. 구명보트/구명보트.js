@@ -10,7 +10,6 @@ function solution(people, limit) {
     
     let i = 0;
     let j = length - 1;
-    let isStartLoop = false;
     
     while (i <= j) {
         if (sortedPeople[i] + sortedPeople[j] <= limit) {
