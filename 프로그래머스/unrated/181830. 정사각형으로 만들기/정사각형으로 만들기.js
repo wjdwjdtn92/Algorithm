@@ -7,25 +7,17 @@ function solution(arr) {
     }
     
     if (row < col) {
-        const appendZeros = [];
+        const zeroRow = new Array(col - row).fill(0);
         
-        for (let i = 0; i < col - row; i++){
-            appendZeros.push(0);
-        }       
-        
-        arr.map(item => item.push(...appendZeros));
+        arr.map(item => item.push(...zeroRow));
         
         return arr;
     }
     
-    const appendZeros = [];
-    
-    for (let i = 0; i < row; i++){
-        appendZeros.push(0);
-    } 
+    const zeroRow = new Array(row).fill(0);
     
     for (let i = 0; i < row - col; i++){
-        arr.push(appendZeros);
+        arr.push(zeroRow);
     }  
         
     return arr;
