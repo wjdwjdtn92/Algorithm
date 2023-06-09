@@ -1,6 +1,6 @@
 const fs = require('fs');
-const inputs = fs.readFileSync("/dev/stdin").toString().trim().split(" ");
+const numbers = fs.readFileSync("/dev/stdin").toString().trim().split(" ");
 
-const sortedArr = [...inputs].sort((a, b) => a - b);
+const sortNumbers = numbers.sort((a, b) => a - b);
 
-console.log(sortedArr.join(" "));
+console.log(sortNumbers.join(" "));
