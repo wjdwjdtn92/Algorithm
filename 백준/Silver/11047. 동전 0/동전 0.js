@@ -18,7 +18,7 @@ for (let i = numbers.length - 1; i >= 0; i--) {
     
     const currentCount = parseInt(changes / numbers[i], 10);
     count += currentCount;
-    changes -= currentCount * numbers[i];
+    changes %= numbers[i];
 }
 
 console.log(count);
